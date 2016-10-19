@@ -3,10 +3,11 @@
 .idea
 
 # NodeJS
-node_modules
+node_modules/
 
 # MAC OS
 .DS_Store
 
 # build
-dist
+dist/**
+

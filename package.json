@@ -1,0 +1,28 @@
+{
+    "name": "dva-antd-demo",
+    "version": "1.0.0",
+    "description": "Dva antd demo.",
+    "entry": {
+        "index": "./src/index.js"
+    },
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "atool-test-mocha ./src/**/*-test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wang-b/dva-antd-demo.git"
+    },
+    "keywords": [
+        "dva",
+        "antd"
+    ],
+    "author": "wangb",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/wang-b/dva-antd-demo/issues"
+    },
+    "homepage": "https://github.com/wang-b/dva-antd-demo#readme"
+}
