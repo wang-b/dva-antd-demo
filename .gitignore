@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+# IntelliJ IDEA
+.idea
+
+# NodeJS
+node_modules
+
+# MAC OS
+.DS_Store
+
+# build
+dist
