@@ -25,10 +25,10 @@ const UserSearch = ({
                     <Form.Item>
                         <Select
                             showSearch
-                            placeholder="--请选择--"
+                            placeholder="----请选择----"
                             style={{ width: '120px' }}
                         >
-                            <Select.Option value="">--请选择--</Select.Option>
+                            <Select.Option value="">----请选择----</Select.Option>
                             <Select.Option value="name">姓名</Select.Option>
                             <Select.Option value="address">地址</Select.Option>
                             <Select.Option value="job">职业</Select.Option>

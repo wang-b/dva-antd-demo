@@ -18,9 +18,11 @@ module.exports = function (webpackConfig, env) {
     if (env === 'development') {
         webpackConfig.devtool = '#eval';
         webpackConfig.babel.plugins.push(['dva-hmr', {
+            //container: '#root',
+            //quiet: false,
             entries: [
-                './src/index.js'
-            ]
+                './src/index.js',
+            ],
         }]);
     } else {
         webpackConfig.babel.plugins.push('dev-expression');

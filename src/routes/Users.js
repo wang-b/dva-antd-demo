@@ -9,6 +9,9 @@ import React, { Component, PropTypes } from 'react';
 //引入 connect 工具函数
 import { connect } from 'dva';
 
+//引入布局组件
+import MainLayout from '../components/Layout/MainLayout';
+
 // Users 的 Presentational Component
 import UserList from '../components/Users/UserList';
 import UserSearch from '../components/Users/UserSearch';
@@ -33,15 +36,23 @@ function Users({ location, dispatch, users }) {
     };
     const userModalProps = {};
 
+    // 解决 Form.create initialValue 的问题
+    // 每次创建一个全新的组件, 而不做diff
+    // 如果你使用了redux, 请移步 http://react-component.github.io/form/examples/redux.html
+    const UserModalGen = () =>
+        <UserModal {...userModalProps}/>;
+
     return (
-        <div className={styles.normal}>
-            {/* 用户筛选搜索框 */}
-            <UserSearch {...userSearchProps}/>
-            {/* 用户信息展示列表 */}
-            <UserList {...userListProps}/>
-            {/* 添加用户 & 外科改用户弹出浮屠 */}
-            <UserModal {...userModalProps}/>
-        </div>
+        <MainLayout location={location}>
+            <div className={styles.normal}>
+                {/* 用户筛选搜索框 */}
+                <UserSearch {...userSearchProps}/>
+                {/* 用户信息展示列表 */}
+                <UserList {...userListProps}/>
+                {/* 添加用户 & 外科改用户弹出浮屠 */}
+                <UserModalGen />
+            </div>
+        </MainLayout>
     );
 }
 

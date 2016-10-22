@@ -4,18 +4,20 @@
 'use strict';
 
 const qs = require('qs');
-const mock = require('mockjs');
+const Mock = require('mockjs');
 
 //数据持久化
 let MOCK_DATA = [];
 if (!global.MOCK_DATA) {
-    const data = mock.mock({
+    const data = Mock.mock({
         'list|100': [{
             'id|+1': 1,
             name: '@cname',
             'age|16-40': 1,
-            address: '@region',
-            job: 'Software Engineer',
+            address: '@county(true)',
+            email: '@email',
+            createdAt: '@now',
+            updatedAt: '@now',
         }]
     });
     MOCK_DATA = data.list;

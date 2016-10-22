@@ -20,6 +20,11 @@ const UserList = ({
     //数据
     const columns = [
         {
+            title: 'ID',
+            dataIndex: 'id',
+            key: 'id',
+        },
+        {
             title: '姓名',
             dataIndex: 'name',
             key: 'name',
@@ -36,9 +41,19 @@ const UserList = ({
             key: 'address',
         },
         {
-            title: '职业',
-            dataIndex: 'job',
-            key: 'job',
+            title: '邮箱',
+            dataIndex: 'email',
+            key: 'email',
+        },
+        {
+            title: '创建时间',
+            dataIndex: 'createdAt',
+            key: 'createdAt',
+        },
+        {
+            title: '更新时间',
+            dataIndex: 'updatedAt',
+            key: 'updatedAt',
         },
         {
             title: '操作',

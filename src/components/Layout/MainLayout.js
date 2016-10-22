@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import styles from './MainLayout.less';
 import Header from './Header';
 import Footer from './Footer';
+import MainMenu from './MainMenu';
 
 //包含头部栏和页脚布局, 采用 stateless 的写法
 const MainLayout = ({
@@ -16,13 +17,14 @@ const MainLayout = ({
 }) => {
     return (
         <div className={styles.normal}>
-            <Header location={location}/>
+            <Header location={location} />
             <div className={styles.content}>
+                <MainMenu />
                 <div className={styles.main}>
                     {children}
                 </div>
             </div>
-            <Footer location={location}/>
+            <Footer location={location} />
         </div>
     );
 };
