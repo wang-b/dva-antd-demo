@@ -7,14 +7,15 @@
 import React, { PropTypes } from 'react';
 
 //采用antd的UI组件
-import { Table, Message, Popconfirm } from 'antd';
+import { Table, Pagination, Popconfirm } from 'antd';
 
 //采用 stateless 的写法
 const UserList = ({
     total,
     current,
     loading,
-    dataSource
+    dataSource,
+    onPageChange,
 }) => {
     //数据
     const columns = [
@@ -22,17 +23,22 @@ const UserList = ({
             title: '姓名',
             dataIndex: 'name',
             key: 'name',
-            render: (text) => <a href="#">{text}</a>
+            render: (text) => <a href="#">{text}</a>,
         },
         {
             title: '年龄',
             dataIndex: 'age',
-            key: 'age'
+            key: 'age',
         },
         {
             title: '住址',
             dataIndex: 'address',
-            key: 'address'
+            key: 'address',
+        },
+        {
+            title: '职业',
+            dataIndex: 'job',
+            key: 'job',
         },
         {
             title: '操作',
@@ -45,17 +51,9 @@ const UserList = ({
                         <a>删除</a>
                     </Popconfirm>
                 </p>
-            )
+            ),
         }
     ];
-
-    //定义分页对象
-    const pagination = {
-        total,
-        current,
-        pageSize: 10,
-        onChange: () => {}
-    };
 
     return (
         <div>
@@ -64,10 +62,25 @@ const UserList = ({
                 dataSource = {dataSource}
                 loading = {loading}
                 rowKey = { record => record.id }
-                pagination = {pagination}
+                pagination = {false}
+            />
+            <Pagination
+                className = "ant-table-pagination"
+                total = {total}
+                current = {current}
+                pageSize = {10}
+                onChange = {onPageChange}
             />
         </div>
     );
+};
+
+UserList.propTypes = {
+    total: PropTypes.any,
+    current: PropTypes.any,
+    loading: PropTypes.any,
+    dataSource: PropTypes.array,
+    onPageChange: PropTypes.func,
 };
 
 export default UserList;

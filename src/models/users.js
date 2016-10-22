@@ -5,6 +5,7 @@
  * @version 0.9.0
  */
 import { query } from '../services/users';
+import qs from 'qs';
 
 export default {
     namespace: 'users',
@@ -16,17 +17,18 @@ export default {
         current: null,  //当前分页信息
         currentItem: {},  //当前操作的用户对象
         modalVisible: false,  //弹出窗的显示状态
-        modalType: 'create'   //弹出窗的类型（添加用户，编辑用户）
+        modalType: 'add',   //弹出窗的类型（添加用户，编辑用户）
     },
 
     // 订阅一个数据源
     subscriptions: {
         setup({ dispatch, history }) {
             history.listen(location => {
-                if (location.pathname == '/users') {
+                //http://127.0.0.1:8989/#/users?_k=az23we
+                if (location.pathname == '/users' || location.pathname == '/users/') {
                     dispatch({
                         type: 'query',
-                        payload: {}
+                        payload: location.query,
                     })
                 }
             });
@@ -36,21 +38,21 @@ export default {
     effects: {
         *query({ payload }, { select, call, put }){
             yield put({ type: 'showLoading' });
-            const { data } = yield call(query);
+            const { data } = yield call(query, qs.parse(payload));
             if (data) {
                 yield put({
                     type: 'querySuccess',
                     payload: {
                         list: data.data,
                         total: data.page.total,
-                        current: data.page.current
+                        current: data.page.current,
                     }
                 })
             }
         },
         *add(){},
         *update(){},
-        *del(){}
+        *del(){},
     },
 
     reducers: {
@@ -64,6 +66,6 @@ export default {
         },
         addSuccess(){},
         updateSuccess(){},
-        delSuccess(){}
+        delSuccess(){},
     }
 };

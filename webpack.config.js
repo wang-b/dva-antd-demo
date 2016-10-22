@@ -2,14 +2,16 @@
 
 const fs = require('fs');
 const path = require('path');
+const webpack = require('atool-build/lib/webpack');
 
 module.exports = function (webpackConfig, env) {
+    webpackConfig.babel.babelrc = false;
     webpackConfig.babel.plugins.push('transform-runtime');
 
     //babel-plugin-import用来自动引入antd的脚本和样式
     webpackConfig.babel.plugins.push(['import', {
         libraryName: 'antd',
-        style: 'css'
+        style: 'css'  // if true, use less
     }]);
 
     // Support hmr

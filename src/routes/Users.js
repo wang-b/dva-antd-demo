@@ -20,7 +20,7 @@ import styles from './Users.less';
 function Users({ location, dispatch, users }) {
     const {
         loading, list, total, current,
-        currentItem, modalVisible, modalType
+        currentItem, modalVisible, modalType,
     } = users;
 
     const userSearchProps = {};
@@ -28,7 +28,8 @@ function Users({ location, dispatch, users }) {
         dataSource: list,
         total,
         loading,
-        current
+        current,
+        onPageChange: () => {}
     };
     const userModalProps = {};
 
