@@ -26,4 +26,6 @@ app.model(Users);
 app.router(Router);
 
 // 5. Start
-app.start(document.getElementById('root'));
+let rootElement = document.getElementById('root');
+rootElement.style.minHeight = document.body.clientHeight + "px";
+app.start(rootElement);

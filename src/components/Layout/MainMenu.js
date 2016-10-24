@@ -11,10 +11,10 @@ import styles from './MainMenu.less';
 const MainMenu = ({}) => {
     return (
         <div className={styles.normal}>
+            <div className = {styles.menu} >
             <Menu
                 theme = "light"
                 onClick = { () => {} }
-                className = {styles.menu}
                 defaultOpenKeys = {['M1_1']}
                 selectedKeys = {['M2_1_1']}
                 mode = "inline"
@@ -36,6 +36,7 @@ const MainMenu = ({}) => {
                     <Menu.Item key="M2_3_4">Option 4</Menu.Item>
                 </Menu.SubMenu>
             </Menu>
+            </div>
         </div>
     );
 };
